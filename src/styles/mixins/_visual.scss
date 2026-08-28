@@ -1,0 +1,27 @@
+@mixin cursor {
+  cursor: pointer;
+}
+
+@mixin transition-hover {
+  transition: 0.2s ease;
+}
+
+@mixin border-radius-base {
+  border-radius: 5px;
+}
+
+@mixin flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}

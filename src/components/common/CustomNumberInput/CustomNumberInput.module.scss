@@ -1,0 +1,8 @@
+@import '@/styles/mixins/visual';
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid;
+  @include border-radius-base;
+}

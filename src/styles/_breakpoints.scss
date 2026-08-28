@@ -1,0 +1,20 @@
+$breakpoints: (
+  'full-hd': 1920px,
+  'wide': 1250px,
+  'desktop': 1024px,
+  'desktop-medium': 980px,
+  'desktop-small': 920px,
+  'tablet': 768px,
+  'tablet-medium': 600px,
+  'mobile': 375px,
+);
+
+@mixin response($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints,$breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Неизвестный breakpoint: #{$breakpoint}";
+  }
+}

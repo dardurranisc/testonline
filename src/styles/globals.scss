@@ -1,0 +1,46 @@
+@import './variables';
+@import './mixins/visual';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: $color-primary;
+}
+
+label {
+  font-weight: bold;
+  color: $color-gray-600;
+}
+
+a,
+button {
+  @include transition-hover;
+}
+
+input,
+label,
+button {
+  @include cursor;
+}
+
+main {
+  background:
+    linear-gradient($color-gray-300, transparent 1px),
+    linear-gradient(90deg, $color-gray-300, transparent 1px);
+  background-size: 20px 20px;
+  background-position: center center;
+}

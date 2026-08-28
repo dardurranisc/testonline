@@ -1,0 +1,89 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.wrapper {
+  margin: 0 auto;
+  width: 80%;
+  padding: 20px 0px;
+
+  @include response('tablet-medium') {
+    width: 100%;
+  }
+}
+
+.formContainer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: $color-secondary;
+  border: 1px solid;
+  @include border-radius-base;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.heading h1 {
+  @include response('tablet-medium') {
+    font-size: 5vw;
+  }
+}
+
+.block {
+  @include flex-col;
+  gap: 20px;
+}
+
+.name {
+  @include flex-col;
+}
+
+.inputTitle {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid $color-primary;
+  @include border-radius-base;
+}
+
+.name .label {
+  font-weight: bold;
+  color: #515050;
+}
+.questions {
+  @include flex-col;
+}
+
+.questions .span {
+  font-weight: bold;
+  color: $color-gray-600;
+}
+
+.questions h2 {
+  @include response('tablet-medium') {
+    font-size: 4vw;
+  }
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 15px;
+  border: 1px dotted;
+  @include border-radius-base;
+}
+
+.title {
+  font-size: 17px;
+
+  @include response('tablet-medium') {
+    font-size: 15px;
+  }
+
+  @include response('mobile') {
+    font-size: 4vw;
+  }
+}

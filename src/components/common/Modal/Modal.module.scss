@@ -1,0 +1,55 @@
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 15%);
+}
+
+.block {
+  width: 40%;
+  margin: 0 auto;
+  padding: 15px 10px;
+  background: white;
+  @include border-radius-base;
+
+  @include response('desktop-medium') {
+    width: 60%;
+  }
+
+  @include response('tablet-medium') {
+    width: 100%;
+    margin: 0 40px;
+  }
+
+  @include response('mobile') {
+    margin: 0 5px;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  @include response('tablet-medium') {
+    font-size: 22px;
+  }
+
+  @include response('mobile') {
+    font-size: 5vw;
+  }
+}
+
+.content {
+  margin-top: 10px;
+}

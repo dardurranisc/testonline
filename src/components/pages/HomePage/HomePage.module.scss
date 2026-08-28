@@ -1,0 +1,29 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.wrapper {
+  @include flex-col;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.heading {
+  @include response('tablet') {
+    text-align: center;
+  }
+}
+
+.block {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px 40px;
+
+  @include response('wide') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include response('desktop-small') {
+    grid-template-columns: 1fr;
+  }
+}

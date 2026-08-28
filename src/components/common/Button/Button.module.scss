@@ -1,0 +1,47 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border: none;
+  @include border-radius-base;
+  @include cursor;
+
+  &:disabled {
+    color: $color-gray-400;
+    background: $color-gray-100;
+    cursor: default;
+  }
+}
+
+.white {
+  color: $color-primary;
+  background: $color-secondary;
+  border: 1px solid $color-primary;
+
+  &:hover {
+    background-color: $color-gray-200;
+  }
+}
+
+.black {
+  color: $color-secondary;
+  background: $color-primary;
+
+  &:hover {
+    background-color: $color-gray-600;
+  }
+}
+
+.transparent {
+  background: transparent;
+  border: none;
+
+  &:hover {
+    color: $color-gray-600;
+  }
+}

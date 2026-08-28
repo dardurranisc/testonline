@@ -1,0 +1,62 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+
+.blockActive {
+  padding: 15px 10px;
+  background-color: $color-gray-50;
+  border: 1px solid;
+  @include border-radius-base;
+}
+
+.none {
+  display: none;
+}
+
+.form {
+  @include flex-col;
+  gap: 10px;
+  margin: 5px 0px;
+}
+
+.list {
+  @include flex-col;
+  gap: 5px;
+}
+
+.list label {
+  font-weight: bold;
+  color: $color-gray-800;
+}
+
+.list input {
+  padding: 5px;
+  @include border-radius-base;
+}
+
+.variant {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid;
+  @include border-radius-base;
+}
+
+.variant label {
+  flex-shrink: 0;
+}
+
+.variant input {
+  flex: 1;
+}
+
+.options {
+  display: flex;
+  gap: 2.5px;
+}
+
+.btnsForQuestion {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}

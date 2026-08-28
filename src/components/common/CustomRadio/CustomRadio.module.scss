@@ -1,0 +1,26 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  @include cursor;
+}
+
+.input {
+  display: none;
+  appearance: none;
+}
+
+.customRadio {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid $color-gray-400;
+}
+
+.input:checked + .customRadio {
+  background: $color-blue;
+  border-color: $color-blue;
+}

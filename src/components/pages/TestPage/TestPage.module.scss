@@ -1,0 +1,75 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid;
+  @include border-radius-base;
+  background-color: $color-secondary;
+}
+
+.form span {
+  font-weight: bold;
+  color: $color-gray-600;
+}
+
+.main {
+  @include flex-col;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.blockAnswers {
+  @include flex-col;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.question {
+  padding: 5px;
+  border: 1px solid;
+  @include border-radius-base;
+}
+
+.finishBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  color: $color-secondary;
+  background-color: $color-primary;
+  border: 1px solid;
+  @include border-radius-base;
+
+  &:hover {
+    background-color: $color-gray-600;
+  }
+}
+
+.input {
+  margin-right: 5px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.actions button {
+  padding: 5px;
+  color: $color-primary;
+  background: $color-secondary;
+  border: 1px solid $color-primary;
+
+  &:hover {
+    background-color: $color-gray-200;
+  }
+}

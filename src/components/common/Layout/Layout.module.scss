@@ -1,0 +1,11 @@
+@import '@/styles/mixins/visual';
+
+.wrapper {
+  @include flex-col;
+  min-height: 100vh;
+}
+
+.main {
+  @include flex-col;
+  flex: 1;
+}

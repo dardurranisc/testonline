@@ -1,0 +1,21 @@
+@import '@/styles/breakpoints';
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 72px;
+
+  @include response('desktop') {
+    max-width: 100%;
+    padding: 0 72px;
+  }
+
+  @include response('tablet-medium') {
+    padding: 0 40px;
+  }
+
+  @include response('mobile') {
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,26 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+  appearance: none;
+}
+
+.customCheckbox {
+  width: 15px;
+  height: 15px;
+  border: 1px solid $color-gray-400;
+  border-radius: 3px;
+}
+
+.input:checked + .customCheckbox {
+  background: $color-blue;
+  border-color: $color-blue;
+}

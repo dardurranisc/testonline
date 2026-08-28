@@ -1,0 +1,74 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.test {
+  @include flex-col;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 5px;
+  background-color: $color-secondary;
+  border: 1px solid $color-primary;
+  border-left-width: 5px;
+  @include border-radius-base;
+  @include cursor;
+  @include transition-hover;
+
+  &:hover {
+    border-color: $color-gray-600;
+  }
+
+  @include response('tablet-medium') {
+    gap: 3.33vw;
+  }
+}
+
+.header {
+  @include flex-row;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header h2 {
+  flex: 1;
+  width: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
+  @include response('tablet-medium') {
+    font-size: 4vw;
+  }
+
+  @include response('mobile') {
+    font-size: 5vw;
+  }
+}
+
+.openTestBtn {
+  background: transparent;
+  border: none;
+}
+
+.edit {
+  padding: 5px 10px;
+  font-size: 15px;
+  color: $color-primary;
+  background-color: $color-gray-200;
+  @include border-radius-base;
+
+  &:hover {
+    color: $color-gray-600;
+  }
+
+  @include response('tablet-medium') {
+    font-size: 3vw;
+  }
+
+  @include response('mobile') {
+    font-size: 4vw;
+  }
+}

@@ -1,0 +1,30 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.panelFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 5px;
+  background-color: $color-secondary;
+  border: 1px solid $color-gray;
+  @include border-radius-base;
+
+  @include response('mobile') {
+    gap: 5px;
+  }
+}
+
+.inputGroup {
+  @include flex-col;
+  width: 100%;
+}
+
+.search {
+  margin-top: 5px;
+  padding: 5px;
+  border: 1px solid $color-primary;
+  @include border-radius-base;
+}

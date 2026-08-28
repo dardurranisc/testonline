@@ -1,0 +1,72 @@
+@import '@/styles/variables';
+@import '@/styles/mixins/visual';
+@import '@/styles/breakpoints';
+
+.section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.block {
+  width: 50%;
+  margin: 80px auto;
+
+  @include response('desktop-small') {
+    width: 65%;
+  }
+
+  @include response('tablet-medium') {
+    width: 100%;
+  }
+}
+
+.blockContent {
+  padding: 10px 15px;
+  background-color: $color-secondary;
+  border: 1px solid;
+  @include border-radius-base;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formGroup label {
+  color: $color-gray-600;
+  font-weight: bold;
+}
+
+.formGroup input {
+  padding: 5px;
+  border: 1px solid $color-gray;
+  @include border-radius-base;
+}
+
+.blockContent button {
+  padding: 5px;
+  color: $color-secondary;
+  background: $color-primary;
+  border: none;
+  @include border-radius-base;
+}
+
+.typeUser {
+  display: flex;
+  gap: 15px;
+}
+
+.typeUser label {
+  display: flex;
+  gap: 5px;
+  color: $color-primary;
+}
