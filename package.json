@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "vercel-build": "next build"
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@dnd-kit/react": "^0.5.0",
