@@ -30,6 +30,14 @@ const AuthGuard = ({ children }: AuthGuardProps) => {
     }
   }, [currentUser, pathName, isStatus, isPublic, router]);
 
+  if (isStatus === 'loading' || isStatus === 'default') {
+    return null;
+  }
+
+  if (!currentUser && !isPublic) {
+    return null;
+  }
+
   return <>{children}</>;
 };
 
