@@ -37,6 +37,7 @@ const HomePage = () => {
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
   const [isOpen, setIsOpen] = useState(false);
   const { currentUser } = useSelector((state: RootState) => state.user);
+  const testStatus = useSelector((state: RootState) => state.test.isStatus);
   const [testTitle, setTestTitle] = useState('');
   const [idTest, setIdTest] = useState<number>();
   const router = useRouter();
@@ -93,7 +94,10 @@ const HomePage = () => {
               onClick={toggleSortDirection}
             />
             <div className={styles.block}>
-              {tests.length >= 1 ? (
+              {tests.length < 1 && testStatus === 'resolved' && (
+                <p>Тестов по данному запросу нет...Попробуйте другой запрос</p>
+              )}
+              {tests.length >= 1 &&
                 tests.map((test) => (
                   <TestItem
                     key={test.id}
@@ -102,10 +106,7 @@ const HomePage = () => {
                     testId={test.id}
                     onClick={() => handleTestConfirm(test)}
                   />
-                ))
-              ) : (
-                <p>Тестов по данному запросу нет...Попробуйте другой запрос</p>
-              )}
+                ))}
             </div>
             {totalPages > 1 && (
               <Pagination

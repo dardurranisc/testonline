@@ -31,6 +31,10 @@ export const useQuestion = ({
       setTypeQuestion(question.question_type);
       setAnswers(question.answers || []);
 
+      const answers = question.answers || [];
+      const positioningAnswers = answers.map((a, i) => ({ ...a, position: i }));
+      setAnswers(positioningAnswers);
+
       if (question.question_type === 'number' && question.answers?.length > 0) {
         setNumberAnswer(question.answers[0].text);
       } else {

@@ -10,6 +10,7 @@ type UseSaveQuestionParams = {
   answers: AnswerBase[];
   numberAnswer: string;
   editingQuestionUuid: string | null;
+  setIsFormQuestion: (value: boolean) => void;
   setQuestions: (value: QuestionBase[]) => void;
   setEditingQuestionUuid: (value: string | null) => void;
   resetForm: () => void;
@@ -24,6 +25,7 @@ export const useSaveQuestion = ({
   editingQuestionUuid,
   setQuestions,
   setEditingQuestionUuid,
+  setIsFormQuestion,
   resetForm,
 }: UseSaveQuestionParams) => {
   const saveQuestion = () => {
@@ -77,6 +79,7 @@ export const useSaveQuestion = ({
       setQuestions([...questions, newQuestion]);
     }
 
+    setIsFormQuestion(false);
     resetForm();
   };
 

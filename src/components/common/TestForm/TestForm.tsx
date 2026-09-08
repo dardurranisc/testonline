@@ -96,6 +96,7 @@ const TestFrom = ({
     answers,
     numberAnswer,
     editingQuestionUuid,
+    setIsFormQuestion,
     setQuestions,
     setEditingQuestionUuid,
     resetForm,
@@ -204,7 +205,10 @@ const TestFrom = ({
                 handleAnswerDelete={deleteAnswer}
                 addAnswer={addAnswer}
                 saveQuestion={saveQuestion}
-                onCancel={() => setIsFormQuestion(false)}
+                onCancel={() => {
+                  resetForm();
+                  setIsFormQuestion(false);
+                }}
               />
               <div className={styles.footer}>
                 <Button variant="black" onClick={() => setShowSaveConfirm(true)}>

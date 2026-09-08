@@ -59,6 +59,7 @@ const QuestionForm = ({
   saveQuestion,
   onCancel,
 }: QuestionFormProps) => {
+  console.log(answers);
   const handleDragEnd = (event: DragEndEvent) => {
     if (event.canceled) return;
 
@@ -72,8 +73,8 @@ const QuestionForm = ({
         const newAnswers = [...answers];
         const [moved] = newAnswers.splice(prevIndex, 1);
         newAnswers.splice(newIndex, 0, moved);
-        newAnswers.forEach((answer, index) => (answer.position = index));
-        setAnswers(newAnswers);
+        const updated = newAnswers.map((a, i) => ({ ...a, position: i }));
+        setAnswers(updated);
       }
     }
   };

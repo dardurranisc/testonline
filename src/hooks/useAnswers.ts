@@ -30,8 +30,8 @@ export const useAnswers = ({ answers, setAnswers }: UseAnswersParams) => {
       newAnswers[position - 1],
       newAnswers[position],
     ];
-    newAnswers.forEach((a, i) => (a.position = i));
-    setAnswers(newAnswers);
+    const updatedAnswers = newAnswers.map((a, i) => ({ ...a, position: i }));
+    setAnswers(updatedAnswers);
   };
 
   const moveDown = (position: number) => {
@@ -41,8 +41,8 @@ export const useAnswers = ({ answers, setAnswers }: UseAnswersParams) => {
       newAnswers[position + 1],
       newAnswers[position],
     ];
-    newAnswers.forEach((a, i) => (a.position = i));
-    setAnswers(newAnswers);
+    const updatedAnswers = newAnswers.map((a, i) => ({ ...a, position: i }));
+    setAnswers(updatedAnswers);
   };
 
   const deleteAnswer = (uuid: string) => {
@@ -50,9 +50,9 @@ export const useAnswers = ({ answers, setAnswers }: UseAnswersParams) => {
       alert('Количество ответов в данном типе вопроса не может быть меньше двух');
       return;
     }
-    const newAnswers = answers.filter((answer) => answer.uuid !== uuid);
-    newAnswers.forEach((a, i) => (a.position = i));
-    setAnswers(newAnswers);
+    const filtered = answers.filter((a) => a.uuid !== uuid);
+    const updated = filtered.map((a, i) => ({ ...a, position: i }));
+    setAnswers(updated);
   };
 
   return {
