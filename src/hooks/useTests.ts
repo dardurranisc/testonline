@@ -8,8 +8,8 @@ import { getTests } from '@/store/testSlice';
 
 export const useTests = () => {
   const [tests, setTests] = useState<TestBase[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-
   const abortRef = useRef<AbortController | null>(null);
 
   const fetchTests = useCallback(
@@ -21,8 +21,6 @@ export const useTests = () => {
       const controller = new AbortController();
       abortRef.current = controller;
 
-      setTests([]);
-
       try {
         const result = await dispatch(getTests(queryParams)).unwrap();
 
@@ -31,6 +29,7 @@ export const useTests = () => {
         }
 
         setTests(result.results);
+        setIsLoaded(true);
 
         return result.pagination.total_pages;
       } catch (error) {
@@ -42,11 +41,12 @@ export const useTests = () => {
         const err = error as { message?: string };
         const message = err?.message || 'Ошибка при получении тестов. Попробуйте позже.';
 
+        setIsLoaded(true);
         alert(message);
       }
     },
     [dispatch]
   );
 
-  return { tests, fetchTests };
+  return { tests, isLoaded, fetchTests };
 };

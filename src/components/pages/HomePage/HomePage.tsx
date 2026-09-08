@@ -31,7 +31,7 @@ const HomePage = () => {
     handlePrevPage,
     handleNextPage,
   } = usePagination();
-  const { tests, fetchTests } = useTests();
+  const { tests, isLoaded, fetchTests } = useTests();
   const [search, setSearch] = useState('');
   const [debouncedSearch] = useDebounce(search, 600);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('desc');
@@ -80,6 +80,7 @@ const HomePage = () => {
     loadTests();
   }, [currentPage, debouncedSearch, sortDirection, sortField, fetchTests, setTotalPages]);
 
+  console.log(currentPage);
   return (
     <>
       <Section>
@@ -94,8 +95,8 @@ const HomePage = () => {
               onClick={toggleSortDirection}
             />
             <div className={styles.block}>
-              {tests.length < 1 && testStatus === 'resolved' && (
-                <p>Тестов по данному запросу нет...Попробуйте другой запрос</p>
+              {isLoaded && tests.length === 0 && testStatus === 'resolved' && (
+                <p>Тестов по данному запросу нет...</p>
               )}
               {tests.length >= 1 &&
                 tests.map((test) => (
