@@ -59,7 +59,6 @@ const QuestionForm = ({
   saveQuestion,
   onCancel,
 }: QuestionFormProps) => {
-  console.log(answers);
   const handleDragEnd = (event: DragEndEvent) => {
     if (event.canceled) return;
 

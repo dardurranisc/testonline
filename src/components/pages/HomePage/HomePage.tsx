@@ -80,7 +80,6 @@ const HomePage = () => {
     loadTests();
   }, [currentPage, debouncedSearch, sortDirection, sortField, fetchTests, setTotalPages]);
 
-  console.log(currentPage);
   return (
     <>
       <Section>

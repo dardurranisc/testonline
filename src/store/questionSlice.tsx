@@ -1,3 +1,5 @@
+import { req } from '@/utils/api';
+
 import { QuestionBase } from '@/types/question';
 
 import { thunkSlice } from './thunkSlice';
@@ -24,21 +26,11 @@ const questionSlice = thunkSlice({
         { rejectWithValue }
       ) => {
         try {
-          const response = await fetch(`/api/proxy/tests/${testId}/questions`, {
+          const data = await req({
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key':
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-            },
-            body: JSON.stringify(questions),
+            url: `/api/proxy/tests/${testId}/questions`,
+            body: questions,
           });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            return rejectWithValue(data);
-          }
 
           return data;
         } catch (error) {
@@ -65,21 +57,11 @@ const questionSlice = thunkSlice({
         { rejectWithValue }
       ) => {
         try {
-          const response = await fetch(`/api/proxy/tests/${testId}/questions`, {
+          const data = await req({
             method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key':
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-            },
-            body: JSON.stringify(questions),
+            url: `/api/proxy/tests/${testId}/questions`,
+            body: questions,
           });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            return rejectWithValue(data);
-          }
 
           return data;
         } catch (error) {

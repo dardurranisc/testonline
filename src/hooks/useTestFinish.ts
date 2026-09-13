@@ -25,21 +25,29 @@ export const useTestFinish = (
 
     test.questions.forEach((question) => {
       const userAnswer = userAnswers?.[question.uuid];
-      if (question.question_type === 'single') {
-        const correctAnswer = question.answers.find((answer) => answer.is_right)?.text;
-        if (correctAnswer === userAnswer) correct++;
-      } else if (question.question_type === 'multiple') {
-        const correctTexts = question.answers
-          .filter((answer) => answer.is_right)
-          .map((answer) => answer.text);
-        const userTexts = (userAnswer as string[]) || [];
-        const isCorrect =
-          userTexts.length === correctTexts.length &&
-          correctTexts.every((text) => userTexts.includes(text));
-        if (isCorrect) correct++;
-      } else {
-        const correctNumber = question.answers[0].text;
-        if (userAnswer === correctNumber) correct++;
+
+      switch (question.question_type) {
+        case 'single': {
+          const correctAnswer = question.answers.find((answer) => answer.is_right)?.text;
+          if (correctAnswer === userAnswer) correct++;
+          break;
+        }
+        case 'multiple': {
+          const correctTexts = question.answers
+            .filter((answer) => answer.is_right)
+            .map((answer) => answer.text);
+          const userTexts = (userAnswer as string[]) || [];
+          const isCorrect =
+            userTexts.length === correctTexts.length &&
+            correctTexts.every((text) => userTexts.includes(text));
+          if (isCorrect) correct++;
+          break;
+        }
+        case 'number': {
+          const correctNumber = question.answers[0].text;
+          if (userAnswer === correctNumber) correct++;
+          break;
+        }
       }
     });
 

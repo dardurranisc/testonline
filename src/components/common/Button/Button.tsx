@@ -25,7 +25,7 @@ const Button = ({
     <button
       type={type}
       className={clsx(styles.button, styles[variant], className)}
-      onClick={() => onClick()}
+      onClick={onClick}
       disabled={disabled}
     >
       {children}

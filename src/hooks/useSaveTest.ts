@@ -39,10 +39,6 @@ export const useSaveTest = ({ titleTest, questions, currentTestId, mode }: UseSa
           updateTest({ id: currentTestId, title: titleTest, is_published: true })
         ).unwrap();
 
-        console.log('Обновление вопросов для testId:', currentTestId);
-        console.log('Тип testId:', typeof currentTestId);
-        console.log('Вопросы:', questions);
-
         await dispatch(
           updateQuestions({
             testId: Number(currentTestId),

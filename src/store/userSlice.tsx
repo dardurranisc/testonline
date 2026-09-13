@@ -1,3 +1,5 @@
+import { req } from '@/utils/api';
+
 import { NewUser } from '@/types/user';
 import { CurrentUser } from '@/types/user';
 
@@ -21,20 +23,11 @@ const userSlice = thunkSlice({
   reducers: (create) => ({
     signUp: create.asyncThunk(async (userData: NewUser, { rejectWithValue }) => {
       try {
-        const response = await fetch('https://interns-test-fe.snp.agency/api/signup/', {
+        const data = await req({
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key':
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-          },
-          body: JSON.stringify(userData),
+          url: `https://interns-test-fe.snp.agency/api/signup/`,
+          body: userData,
         });
-        const data = await response.json();
-
-        if (!response.ok) {
-          return rejectWithValue(data);
-        }
 
         return data;
       } catch (error) {
@@ -47,21 +40,11 @@ const userSlice = thunkSlice({
         { rejectWithValue }
       ) => {
         try {
-          const response = await fetch('/api/proxy/signin', {
+          const data = await req({
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key':
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-            },
-            body: JSON.stringify(userData),
+            url: `/api/proxy/signin`,
+            body: userData,
           });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            return rejectWithValue(data);
-          }
 
           return data;
         } catch (error) {
@@ -85,21 +68,11 @@ const userSlice = thunkSlice({
     getCurrentUser: create.asyncThunk(
       async (_, { rejectWithValue }) => {
         try {
-          const response = await fetch('/api/proxy/current_user', {
+          const data = await req({
             method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key':
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-            },
+            url: '/api/proxy/current_user',
             credentials: 'include',
           });
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            return rejectWithValue(data);
-          }
 
           return data;
         } catch (error) {
@@ -123,24 +96,10 @@ const userSlice = thunkSlice({
     logOut: create.asyncThunk(
       async (_, { rejectWithValue }) => {
         try {
-          const response = await fetch('/api/proxy/logout', {
+          const data = await req({
             method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-              'x-api-key':
-                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdF9uYW1lIjoiXHUwNDIwXHUwNDMwXHUwNDNkXHUwNDM4IiwibGFzdF9uYW1lIjoiXHUwNDE0XHUwNDMwXHUwNDQwXHUwNDM0XHUwNDQzXHUwNDQwIn0.bV__1CCGF4YoOOwtC8otmInLJymrSVYULCAtT3930hA',
-            },
+            url: '/api/proxy/logout',
           });
-
-          if (response.status === 204) {
-            return;
-          }
-
-          const data = await response.json();
-
-          if (!response.ok) {
-            return rejectWithValue(data);
-          }
 
           return data;
         } catch (error) {
